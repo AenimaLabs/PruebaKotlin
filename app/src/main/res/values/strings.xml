@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PruebaKotlin</string>
+    <string name="firstAppearance">TextView</string>
+    <string name="fullname">TextView</string>
+</resources>
