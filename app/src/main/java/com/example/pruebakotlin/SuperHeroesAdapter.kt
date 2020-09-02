@@ -1,11 +1,10 @@
-package com.example.pruebakotlin.remote_data_source.retrofit
+package com.example.pruebakotlin
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pruebakotlin.R
 import com.example.pruebakotlin.model.pojo.Pojo_SuperHeroes
 import kotlinx.android.synthetic.main.superhero_list.view.*
 
