@@ -6,8 +6,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pruebakotlin.remote_data_source.retrofit.SuperHeroesAdapter
-import com.example.pruebakotlin.remote_data_source.retrofit.pojo.Pojo_SuperHeroes
-import com.example.pruebakotlin.remote_data_source.retrofit.remote.RetrofitClient
+import com.example.pruebakotlin.model.pojo.Pojo_SuperHeroes
+import com.example.pruebakotlin.model.remote.RetrofitClient
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback

@@ -1,6 +1,5 @@
-package com.example.pruebakotlin.remote_data_source.retrofit.remote
+package com.example.pruebakotlin.model.remote
 
-import com.google.gson.Gson
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

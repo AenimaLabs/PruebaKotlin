@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pruebakotlin.R
-import com.example.pruebakotlin.remote_data_source.retrofit.pojo.Pojo_SuperHeroes
+import com.example.pruebakotlin.model.pojo.Pojo_SuperHeroes
 import kotlinx.android.synthetic.main.superhero_list.view.*
 
 class SuperHeroesAdapter(private val myDataHeroe: List<Pojo_SuperHeroes>):
@@ -15,7 +15,7 @@ class SuperHeroesAdapter(private val myDataHeroe: List<Pojo_SuperHeroes>):
     class SuperHeroeHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
         var id : TextView = itemView.idhero
         var name : TextView = itemView.name
-        var fullname : TextView = itemView.fullname
+
     }
 
 
@@ -29,7 +29,7 @@ class SuperHeroesAdapter(private val myDataHeroe: List<Pojo_SuperHeroes>):
         val superheroe = myDataHeroe[position]
         holder.id.text = superheroe.id.toString()
         holder.name.text = superheroe.name
-        holder.fullname.text = superheroe.fullName
+
 
 
 //        val aliases: List<String>,
