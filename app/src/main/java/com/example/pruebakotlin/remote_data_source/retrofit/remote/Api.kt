@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 interface Api {
 
-    @GET("1.json")
+    @GET("all.json")
     fun getSuperHeroes() : Call<List<Pojo_SuperHeroes>>
 
 }
