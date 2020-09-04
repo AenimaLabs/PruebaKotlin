@@ -1,5 +1,6 @@
 package com.example.pruebakotlin
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,8 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pruebakotlin.model.pojo.Pojo_SuperHeroes
 import kotlinx.android.synthetic.main.superhero_list.view.*
 
-class SuperHeroesAdapter(private val myDataHeroe: List<Pojo_SuperHeroes>):
-    RecyclerView.Adapter<SuperHeroesAdapter.SuperHeroeHolder>() {
+class SuperHeroesAdapter(var myDataHeroe: List<Pojo_SuperHeroes>): RecyclerView.Adapter<SuperHeroesAdapter.SuperHeroeHolder>() {
 
     class SuperHeroeHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
         var id : TextView = itemView.idhero
@@ -17,7 +17,11 @@ class SuperHeroesAdapter(private val myDataHeroe: List<Pojo_SuperHeroes>):
 
     }
 
-
+    fun updateData(listPost: List<Pojo_SuperHeroes>) {
+        Log.d("UPDATE", "update ${listPost.size}")
+        myDataHeroe = listPost
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuperHeroeHolder {
       val view = LayoutInflater.from(parent.context).inflate(R.layout.superhero_list, parent, false)
@@ -28,21 +32,12 @@ class SuperHeroesAdapter(private val myDataHeroe: List<Pojo_SuperHeroes>):
         val superheroe = myDataHeroe[position]
         holder.id.text = superheroe.id.toString()
         holder.name.text = superheroe.name
-
-
-
-//        val aliases: List<String>,
-//        val alignment: String,
-//        val alterEgos: String,
-//        val firstAppearance: String,
-//        val fullName: String,
-//        val placeOfBirth: String,
-//        val publisher: String
     }
 
     override fun getItemCount(): Int {
         return myDataHeroe.size
     }
+
 
 
 }

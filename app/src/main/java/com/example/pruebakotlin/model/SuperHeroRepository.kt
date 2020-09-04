@@ -2,7 +2,6 @@ package com.example.pruebakotlin.model
 
 import android.content.Context
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import com.example.pruebakotlin.model.db.SuperHeroDB
 import com.example.pruebakotlin.model.pojo.Pojo_SuperHeroes
@@ -20,7 +19,7 @@ class SuperHeroRepository (context : Context) {
 
     //desde la database
     private val db: SuperHeroDB = SuperHeroDB.getDatabase(context)
-    private val superheroList = db.superheroeDao().getAllSuperHeroes()
+    private val superheroList = db.getsuperheroDao().getAllSuperHeroes()
 
     fun passLiveDataToViewModel() : LiveData<List<Pojo_SuperHeroes>>{
         return superheroList
@@ -29,7 +28,7 @@ class SuperHeroRepository (context : Context) {
     //llamando a retrofit
     fun fetchDataFromServer(){
         val service = RetrofitClient.retrofitInstance()
-        val call = service.getSuperHeroes()
+        val call = service.getSuperHeroesList()
 
        call.enqueue(object : Callback<List<Pojo_SuperHeroes>>{
            override fun onResponse(
@@ -37,7 +36,10 @@ class SuperHeroRepository (context : Context) {
                response: Response<List<Pojo_SuperHeroes>>
            ) {
                Log.wtf(tag, response.body().toString())
-               CoroutineScope(Dispatchers.IO).launch { response.body()?.let { db.superheroeDao().getAllSuperHeroes() } }
+               CoroutineScope(Dispatchers.IO).launch{
+                   response.body()?.let { db.getsuperheroDao().insertSuperHeroList(it) }
+
+               }
            }
 
            override fun onFailure(call: Call<List<Pojo_SuperHeroes>>, t: Throwable) {

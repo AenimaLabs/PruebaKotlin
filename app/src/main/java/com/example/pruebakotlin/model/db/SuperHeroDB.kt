@@ -9,7 +9,7 @@ import com.example.pruebakotlin.model.pojo.Pojo_SuperHeroes
 @Database(entities = [Pojo_SuperHeroes::class], version = 1, exportSchema = false)
 abstract class SuperHeroDB : RoomDatabase() {
 
-    abstract fun superheroeDao() : SuperHeroDao
+    abstract fun getsuperheroDao() : SuperHeroDao
 
     companion object{
         @Volatile
