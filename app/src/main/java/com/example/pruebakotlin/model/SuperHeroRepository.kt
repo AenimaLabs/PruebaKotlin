@@ -21,7 +21,7 @@ class SuperHeroRepository (context : Context) {
     private val db: SuperHeroDB = SuperHeroDB.getDatabase(context)
     private val superheroList = db.getsuperheroDao().getAllSuperHeroes()
 
-    fun passLiveDataToViewModel() : LiveData<List<Pojo_SuperHeroes>>{
+    fun passLiveDataToViewModel() : LiveData<MutableList<Pojo_SuperHeroes>>{
         return superheroList
     }
 
@@ -30,19 +30,24 @@ class SuperHeroRepository (context : Context) {
         val service = RetrofitClient.retrofitInstance()
         val call = service.getSuperHeroesList()
 
-       call.enqueue(object : Callback<List<Pojo_SuperHeroes>>{
+       call.enqueue(object : Callback<MutableList<Pojo_SuperHeroes>>{
            override fun onResponse(
-               call: Call<List<Pojo_SuperHeroes>>,
-               response: Response<List<Pojo_SuperHeroes>>
+               call: Call<MutableList<Pojo_SuperHeroes>>,
+               response: Response<MutableList<Pojo_SuperHeroes>>
            ) {
-               Log.wtf(tag, response.body().toString())
+               when(response.code()) {
+                   in 200..299 ->
+                      // Log.wtf(tag, response.body().toString())
                CoroutineScope(Dispatchers.IO).launch{
                    response.body()?.let { db.getsuperheroDao().insertSuperHeroList(it) }
 
                }
+                   in 300..399 -> Log.d("ERROR 300", response.errorBody().toString())
+               }
            }
 
-           override fun onFailure(call: Call<List<Pojo_SuperHeroes>>, t: Throwable) {
+
+           override fun onFailure(call: Call<MutableList<Pojo_SuperHeroes>>, t: Throwable) {
                Log.wtf(tag, t.message.toString())
            }
 

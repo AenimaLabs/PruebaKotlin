@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pruebakotlin.model.pojo.Pojo_SuperHeroes
@@ -31,10 +32,12 @@ class MainActivity : AppCompatActivity() {
         viewAdapter = SuperHeroesAdapter(superHList)
         recyclerViewSH.adapter= viewAdapter
 //
-        mViewModel.fetchFromServer()
+       mViewModel.fetchFromServer()
 //       // loadApiData()
 //
-        mViewModel.getSuperHeroList().observe(this, {viewAdapter.updateData(it)})
+        mViewModel.getSuperHeroList().observe(this, Observer {
+            Log.wtf("Main", "size: ${it.size} - name: ${it[0].name}") //
+            viewAdapter.updateData(it)})
 
        // init()
     }

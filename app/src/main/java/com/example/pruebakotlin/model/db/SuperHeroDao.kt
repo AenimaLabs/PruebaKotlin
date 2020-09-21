@@ -9,7 +9,7 @@ import retrofit2.http.POST
 interface SuperHeroDao {
 
     @Insert (onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertSuperHeroList(list: List<Pojo_SuperHeroes>)
+    suspend fun insertSuperHeroList(list: MutableList<Pojo_SuperHeroes>)
 
     @Insert
     suspend fun insertSuperHero(post: Pojo_SuperHeroes)
@@ -18,5 +18,5 @@ interface SuperHeroDao {
     suspend fun updateSuperHero(post: Pojo_SuperHeroes)
 
     @Query ("SELECT * FROM superhero_table ORDER BY id  DESC")
-    fun getAllSuperHeroes(): LiveData<List<Pojo_SuperHeroes>>
+    fun getAllSuperHeroes(): LiveData<MutableList<Pojo_SuperHeroes>>
 }

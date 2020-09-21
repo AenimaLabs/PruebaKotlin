@@ -7,7 +7,7 @@ import retrofit2.http.GET
 interface SuperHeroApi {
 
     @GET("all.json")
-    fun getSuperHeroesList() : Call<List<Pojo_SuperHeroes>>
+  //  fun getSuperHeroesList() : Call<List<Pojo_SuperHeroes>>
 
-//fun getSuperHeroesList() : Call<MutableList<Pojo_SuperHeroes>>  cuando se agrega el livedata
+fun getSuperHeroesList() : Call<MutableList<Pojo_SuperHeroes>> // cuando se agrega el livedata
 }

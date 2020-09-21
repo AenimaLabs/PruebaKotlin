@@ -13,7 +13,7 @@ class SuperHeroViewModel (application: Application) : AndroidViewModel(applicati
 
 
 
-    fun getSuperHeroList(): LiveData<List<Pojo_SuperHeroes>>{
+    fun getSuperHeroList(): LiveData<MutableList<Pojo_SuperHeroes>>{
         return shList
     }
 
