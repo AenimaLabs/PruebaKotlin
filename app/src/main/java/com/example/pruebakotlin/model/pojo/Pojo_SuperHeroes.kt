@@ -8,5 +8,5 @@ import com.google.gson.annotations.SerializedName
 @Entity (tableName = "superhero_table")
 data class Pojo_SuperHeroes(
     @PrimaryKey val id:Int, val name: String,
-//    @Embedded val images: ImagesPojo
+   // @Embedded val images: ImagesPojo
 )
