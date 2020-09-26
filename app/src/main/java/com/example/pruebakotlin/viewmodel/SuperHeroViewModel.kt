@@ -17,7 +17,11 @@ class SuperHeroViewModel (application: Application) : AndroidViewModel(applicati
     private val shList = repository.passLiveDataToViewModel()
 
 
-//    fun insertSuperHeroList(list: MutableList<Pojo_SuperHeroes>) = viewModelScope.launch {  }
+    fun insertSuperHeroList(list: MutableList<Pojo_SuperHeroes>) = viewModelScope.launch {  }
+
+    fun insertSuperHero(post: Pojo_SuperHeroes) = viewModelScope.launch {  }
+
+    fun updateSuperHero(post: Pojo_SuperHeroes) = viewModelScope.launch {  }
 //
 //
 //    fun insertSuperHero(post: Pojo_SuperHeroes)
