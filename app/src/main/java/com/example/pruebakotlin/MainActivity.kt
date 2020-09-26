@@ -27,8 +27,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //get viewmodel
        mViewModel = ViewModelProvider(this).get(SuperHeroViewModel::class.java)
-//
+
+
         viewAdapter = SuperHeroesAdapter(superHList)
         recyclerViewSH.adapter= viewAdapter
 //

@@ -16,7 +16,7 @@ class SuperHeroesAdapter(var myDataHeroe: MutableList<Pojo_SuperHeroes>): Recycl
     class SuperHeroeHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
         var id : TextView = itemView.idhero
         var name : TextView = itemView.name
-        var image: ImageView = itemView.imageView
+     //   var image: ImageView = itemView.imageView
 
     }
 
@@ -28,10 +28,10 @@ class SuperHeroesAdapter(var myDataHeroe: MutableList<Pojo_SuperHeroes>): Recycl
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuperHeroeHolder {
       val view = LayoutInflater.from(parent.context).inflate(R.layout.superhero_list, parent, false)
-//        val holder = SuperHeroeHolder(view)
-//        holder.id = view.idhero
-//        holder.name = view.name
-//        holder.image = view.imageView
+       val holder = SuperHeroeHolder(view)
+       holder.id = view.idhero
+       holder.name = view.name
+   //     holder.image = view.imageView
 
         return SuperHeroeHolder(view)
     }

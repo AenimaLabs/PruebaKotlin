@@ -1,12 +1,11 @@
 package com.example.pruebakotlin.model.db
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
 import com.example.pruebakotlin.model.pojo.Pojo_SuperHeroes
 
 @Database(entities = [Pojo_SuperHeroes::class], version = 1, exportSchema = false)
+
 abstract class SuperHeroDB : RoomDatabase() {
 
     abstract fun getsuperheroDao() : SuperHeroDao

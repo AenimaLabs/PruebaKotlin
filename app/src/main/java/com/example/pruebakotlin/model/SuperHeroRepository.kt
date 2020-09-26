@@ -21,6 +21,8 @@ class SuperHeroRepository (context : Context) {
     private val db: SuperHeroDB = SuperHeroDB.getDatabase(context)
     private val superheroList = db.getsuperheroDao().getAllSuperHeroes()
 
+
+
     fun passLiveDataToViewModel() : LiveData<MutableList<Pojo_SuperHeroes>>{
         return superheroList
     }
@@ -35,9 +37,13 @@ class SuperHeroRepository (context : Context) {
                call: Call<MutableList<Pojo_SuperHeroes>>,
                response: Response<MutableList<Pojo_SuperHeroes>>
            ) {
+//               val superheroesList = mutableListOf<Pojo_SuperHeroes>()
+//               response.body()?.forEach {
+//                   superheroesList.add(Pojo_SuperHeroes(id = it.id, name = it.name, images = it.images))
+//               }
                when(response.code()) {
                    in 200..299 ->
-                      // Log.wtf(tag, response.body().toString())
+                      Log.wtf(tag, response.body().toString())
                CoroutineScope(Dispatchers.IO).launch{
                    response.body()?.let { db.getsuperheroDao().insertSuperHeroList(it) }
 
